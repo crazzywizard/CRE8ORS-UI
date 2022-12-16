@@ -10,16 +10,15 @@ const TextArea: FC<TextAreaProps> = ({ value, label, setValue }) => {
     setValue(e.target.value)
   }
   return (
-    <div className="flex justify-center text-center">
-      <div className="justify-center w-full h-full px-4 mb-3">
-        <label
-          htmlFor="exampleFormControlTextarea1"
-          className="inline-block mb-2 text-gray-700 form-label"
-        >
-          {label}
-        </label>
-        <textarea
-          className="
+    <div className="justify-center w-full h-full mb-4">
+      <label
+        htmlFor="exampleFormControlTextarea1"
+        className="inline-block mb-2 text-sm font-bold text-gray-700"
+      >
+        {label}
+      </label>
+      <textarea
+        className="
         form-control
         block
         w-full
@@ -36,13 +35,12 @@ const TextArea: FC<TextAreaProps> = ({ value, label, setValue }) => {
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
       "
-          id="form-textarea"
-          rows={3}
-          placeholder={label}
-          onChange={handleChange}
-          value={value}
-        />
-      </div>
+        id="form-textarea"
+        rows={3}
+        placeholder={label}
+        onChange={handleChange}
+        value={value}
+      />
     </div>
   )
 }
