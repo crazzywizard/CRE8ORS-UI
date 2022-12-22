@@ -11,8 +11,8 @@ class AllowListApplicants {
   @AllowListAuthGuard()
   @ApplicantRegistered()
   async addAllowListApplicant(@Body(ValidationPipe) body: ApplicantDTO) {
-    await dbConnect()
     try {
+      await dbConnect()
       const result = await AllowList.create(body)
       return { sucess: true, result }
     } catch (error) {

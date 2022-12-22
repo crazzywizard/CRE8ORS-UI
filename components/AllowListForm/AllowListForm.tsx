@@ -11,6 +11,7 @@ interface AllowListFormProps {
   creatorType: string
   setCreatorType: (value: string) => void
   handleSignUp: () => void
+  loading: boolean
 }
 const AllowListForm: FC<AllowListFormProps> = ({
   walletAddress,
@@ -22,6 +23,7 @@ const AllowListForm: FC<AllowListFormProps> = ({
   creatorType,
   setCreatorType,
   handleSignUp,
+  loading,
 }) => {
   const displayBorder = (value: string) => !value?.length && "border-red-500"
   const displayRequiredText = (value: string, message: string) =>
@@ -29,7 +31,9 @@ const AllowListForm: FC<AllowListFormProps> = ({
   const disabled = !walletAddress?.length || !twitterHandle?.length || !whyCre8or?.length
   return (
     <div className="w-full max-w-xl">
-      <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
+      <form
+        className={`px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md ${loading && "animate-pulse"}`}
+      >
         <div className="mb-4">
           <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="username">
             Wallet Address
@@ -91,7 +95,7 @@ const AllowListForm: FC<AllowListFormProps> = ({
             className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline disabled:opacity-25 disabled:cursor-not-allowed"
             type="button"
             onClick={handleSignUp}
-            disabled={disabled}
+            disabled={disabled || loading}
           >
             Sign Up
           </button>
